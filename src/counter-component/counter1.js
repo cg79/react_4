@@ -13,7 +13,7 @@ export class Counter1 extends React.Component {
 
       this.state = {
         counter: 0,
-        step:0,
+        step:props.step,
       };
   }
 

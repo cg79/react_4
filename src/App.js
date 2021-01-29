@@ -1,8 +1,10 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import { Counter } from "./counter-component/counter";
-import { Counter1 } from "./counter-component/counter1";
+
+import Home from "./home/home";
+import CounterParent  from "./counter-component/counter-parent";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export class App extends React.Component {
   state = {
@@ -15,27 +17,42 @@ export class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <Router>
         <div>
-          <Counter start={10} onclick={this.onCounterZeroClick}></Counter>
-          <Counter1 inc={this.state.inc}></Counter1>
-        </div>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/counter">Counter</Link>
+            </li>
+            {/* <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li> */}
+          </ul>
 
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+          <hr />
+
+          {/*
+            A <Switch> looks through all its children <Route>
+            elements and renders the first one whose path
+            matches the current URL. Use a <Switch> any time
+            you have multiple routes, but you want only one
+            of them to render at a time
+          */}
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/counter">
+              <CounterParent />
+            </Route>
+            {/* <Route path="/dashboard">
+              <Dashboard />
+            </Route> */}
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
