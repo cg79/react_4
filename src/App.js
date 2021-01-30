@@ -5,6 +5,9 @@ import React from "react";
 import Home from "./home/home";
 import CounterParent  from "./counter-component/counter-parent";
 import { CounterParentEvents } from "./counter-component-events/counter-parent-events";
+import { CounterParentObserver } from "./counter-component-observer/counter-parent-events-observer";
+import { CounterParentHooks } from "./counter-hooks/counter-parent-hooks";
+
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export class App extends React.Component {
@@ -29,6 +32,13 @@ export class App extends React.Component {
             </li>
             <li>
               <Link to="/counter-events">Counter Events</Link>
+            </li>
+            <li>
+              <Link to="/counter-events-observer">Counter Events Observer</Link>
+            </li>
+
+            <li>
+              <Link to="/counter-hooks">Counter Hooks</Link>
             </li>
             
             {/* <li>
@@ -55,6 +65,13 @@ export class App extends React.Component {
             <Route path="/counter-events">
               <CounterParentEvents />
             </Route>
+            <Route path="/counter-events-observer">
+              <CounterParentObserver />
+            </Route>
+            <Route path="/counter-hooks">
+              <CounterParentHooks />
+            </Route>
+            
             
             {/* <Route path="/dashboard">
               <Dashboard />

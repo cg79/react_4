@@ -1,31 +1,30 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
+import { EVENT_NAMES } from './EventNames';
+import Observer from "./Observer";
 
 
-export class Counter extends React.Component {
+export class CounterEventsObserver1 extends React.Component {
   
   constructor(props) {
       super(props);
       debugger;
-      this.increaseCounter = this.increaseCounter.bind(this);
 
       this.state = {
-        counter: props.start || 0,
+        counter: 0,
       };
   }
 
   increaseCounter = () => {
     this.setState({counter: this.state.counter +1}, () => {
-      this.props.onclick(this.state.counter);
+      this.props.observer.publish(EVENT_NAMES.INCREASE_STEPS, this.state.counter);
     });
-  }
-
-  dat = new Date();
-  setStartDate = () => {
+    
 
   }
+
   render() {
-      // intotdeauna se va randa componenta INCA O DATA, DACA se va modifica starea componentei folosind setState
-    debugger;
     
     return (
       <div>
@@ -35,3 +34,7 @@ export class Counter extends React.Component {
     );
   }
 }
+
+CounterEventsObserver1.propTypes = {
+  observer: PropTypes.instanceOf(Observer)
+};
