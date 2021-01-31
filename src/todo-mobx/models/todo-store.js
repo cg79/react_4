@@ -1,4 +1,5 @@
-import { observable, computed,action,autorun, makeObservable } from "mobx";
+import { observable, computed, action, autorun, makeObservable } from "mobx";
+import { TodoModel } from "./todo";
 
 export class ObservableTodoStore {
   todos = [];
@@ -11,6 +12,7 @@ export class ObservableTodoStore {
       completedTodosCount: computed,
       report: computed,
       addTodo: action,
+      editTodo: action,
     });
     autorun(() => console.log(this.report));
   }
@@ -29,10 +31,21 @@ export class ObservableTodoStore {
   }
 
   addTodo(task) {
-    this.todos.push({
-      task: task,
-      completed: false,
-      assignee: null,
-    });
+    const todo = new TodoModel(task);
+    this.todos.push(todo);
   }
+  editTodo(todo) {
+    debugger;
+    const index = this.todos.findIndex((el) => el.id === todo.id);
+    if (index < 0) {
+      return;
+    }
+    this.todos[index] = todo;
+  }
+
+  removeCompleted() {
+    this.todos = this.todos.filter(el => el.completed !== true);
+  } 
+
+
 }

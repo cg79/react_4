@@ -1,7 +1,7 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-export const TodoItem = observer(({todo}) => {
+export const TodoItem = observer(({todo, handlers}) => {
   const onToggleCompleted = () => {
     todo.completed = !todo.completed;
   }
@@ -17,11 +17,12 @@ export const TodoItem = observer(({todo}) => {
         checked={ todo.completed }
         onChange={ onToggleCompleted }
       />
-      { todo.task }
+      { todo.title }
       { todo.assignee
         ? <small>{ todo.assignee.name }</small>
         : null
       }
+      <button onClick={() => handlers.editTodo(todo)}>Edit</button>
     </li>
   );
 })
