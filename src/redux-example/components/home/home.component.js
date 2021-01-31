@@ -1,51 +1,60 @@
-import React, {Component} from 'react';
-import Button from '../common/button/button.component';
-import { UserList }  from '../user/user-list/user-list.component';
-
+import React, { Component } from "react";
+import Button from "../common/button/button.component";
+import { UserList } from "../user/user-list/user-list.component";
 
 export default class Home extends Component {
-    constructor(props)
-    {
-        super(props);
-        this.state = {
-            loggedUser:  this.props.usersStore.loggedUser,
-        };
-
-        this.login = this.login.bind(this);
-        this.logout = this.logout.bind(this);
-    }
-
-    myCallback = (dataFromChild) => {
-        this.setState({ listDataFromChild: dataFromChild });
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedUser: this.props.usersStore.loggedUser,
     };
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-        this.setState(
-            {
-                loggedUser: nextProps.usersStore.loggedUser,
-            }
-        );
-    };
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+  }
 
-    logout = () => {
-        this.props.logout(null);
-    };
-    login = () => {
-        this.props.login({name:'John'});
-    };
+  myCallback = (dataFromChild) => {
+    this.setState({ listDataFromChild: dataFromChild });
+  };
+
+  componentWillReceiveProps(nextProps) {
+    debugger;
+    console.log(nextProps);
+    this.setState({
+      loggedUser: nextProps.usersStore.loggedUser,
+    });
+  }
+
+  logout = () => {
+    this.props.logout(null);
+  };
+  login = () => {
+    this.props.login({ name: "John" });
+  };
   render() {
-    return(
+      debugger;
+    return (
       <div>
-          {this.state.loggedUser &&
-
-          <Button style={{backgroundColor: 'red', color: 'white'}} click={this.logout}>Logout</Button>
-
-          }
-          {!this.state.loggedUser &&
-          <Button style={{backgroundColor: 'blue', color: 'white'}} click={this.login}>Login</Button>
-          }
-          <UserList userlist={this.props.usersStore.users} getUsersFromContainer={this.props.getUsersFromContainer}/>
+        {this.state.loggedUser && (
+          <Button
+            style={{ backgroundColor: "red", color: "white" }}
+            click={this.logout}
+          >
+            Logout
+          </Button>
+        )}
+        {!this.state.loggedUser && (
+          <Button
+            style={{ backgroundColor: "blue", color: "white" }}
+            click={this.login}
+          >
+            Login
+          </Button>
+        )}
+        <UserList
+          userlist={this.props.usersStore.users}
+          getUsersFromContainer={this.props.getUsersFromContainer}
+        />
       </div>
     );
   }

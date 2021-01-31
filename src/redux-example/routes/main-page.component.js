@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
 } from "react-router-dom";
 
 import HeaderContainer from "../components/header/header.container";

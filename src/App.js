@@ -7,8 +7,8 @@ import CounterParent from "./counter-component/counter-parent";
 import { CounterParentEvents } from "./counter-component-events/counter-parent-events";
 import { CounterParentObserver } from "./counter-component-observer/counter-parent-events-observer";
 import { CounterParentHooks } from "./counter-hooks/counter-parent-hooks";
-import { ReduxExample }  from "./redux-example";
-import { Topics }  from "./redux-example/Topics";
+import { ReduxExample } from "./redux-example";
+import TodoParent from "./todo-mobx/todo-parent";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -25,7 +25,7 @@ export class App extends React.Component {
     return (
       <Router>
         <div>
-          <ul>
+          <ul className="flex listStyleNo header">
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -47,9 +47,9 @@ export class App extends React.Component {
               <Link to="/redux-example">Redux Example</Link>
             </li>
 
-            {/* <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li> */}
+            <li>
+              <Link to="/todo-mobx">todo mobx</Link>
+            </li>
           </ul>
 
           <hr />
@@ -61,32 +61,34 @@ export class App extends React.Component {
             you have multiple routes, but you want only one
             of them to render at a time
           */}
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/counter">
-              <CounterParent />
-            </Route>
-            <Route path="/counter-events">
-              <CounterParentEvents />
-            </Route>
-            <Route path="/counter-events-observer">
-              <CounterParentObserver />
-            </Route>
-            <Route path="/counter-hooks">
-              <CounterParentHooks />
-            </Route>
 
-            <Route path="/redux-example">
-              <Topics></Topics>
-              {/* <ReduxExample /> */}
-            </Route>
+          <div className="container-column">
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/counter">
+                <CounterParent />
+              </Route>
+              <Route path="/counter-events">
+                <CounterParentEvents />
+              </Route>
+              <Route path="/counter-events-observer">
+                <CounterParentObserver />
+              </Route>
+              <Route path="/counter-hooks">
+                <CounterParentHooks />
+              </Route>
 
-            {/* <Route path="/dashboard">
-              <Dashboard />
-            </Route> */}
-          </Switch>
+              <Route path="/redux-example">
+                <ReduxExample />
+              </Route>
+
+              <Route path="/todo-mobx">
+                <TodoParent />
+              </Route>
+            </Switch>
+          </div>
         </div>
       </Router>
     );
