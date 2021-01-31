@@ -3,10 +3,12 @@ import "./App.css";
 import React from "react";
 
 import Home from "./home/home";
-import CounterParent  from "./counter-component/counter-parent";
+import CounterParent from "./counter-component/counter-parent";
 import { CounterParentEvents } from "./counter-component-events/counter-parent-events";
 import { CounterParentObserver } from "./counter-component-observer/counter-parent-events-observer";
 import { CounterParentHooks } from "./counter-hooks/counter-parent-hooks";
+import { ReduxExample }  from "./redux-example";
+import { Topics }  from "./redux-example/Topics";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -40,7 +42,11 @@ export class App extends React.Component {
             <li>
               <Link to="/counter-hooks">Counter Hooks</Link>
             </li>
-            
+
+            <li>
+              <Link to="/redux-example">Redux Example</Link>
+            </li>
+
             {/* <li>
               <Link to="/dashboard">Dashboard</Link>
             </li> */}
@@ -71,8 +77,12 @@ export class App extends React.Component {
             <Route path="/counter-hooks">
               <CounterParentHooks />
             </Route>
-            
-            
+
+            <Route path="/redux-example">
+              <Topics></Topics>
+              {/* <ReduxExample /> */}
+            </Route>
+
             {/* <Route path="/dashboard">
               <Dashboard />
             </Route> */}
