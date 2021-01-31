@@ -1,10 +1,12 @@
 import React from 'react';
+import { withRouter } from "react-router";
 /*	//import UserItem from './logIn/userItem';	*/
 /*	//import { Redirect } from 'react-router-dom';	*/
 /*	import { push } from 'react-router-redux';	*/
 
-export default class UserEdit extends React.Component {
+ class UserEdit extends React.Component {
 	constructor(props) {
+		debugger;
 		super(props);
 
 		this.state = {};
@@ -64,4 +66,6 @@ export default class UserEdit extends React.Component {
 		);
 	}
 }
+
+export default withRouter(UserEdit);
 

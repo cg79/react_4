@@ -20,7 +20,7 @@ class UserItem extends React.Component {
 
                 <Link style={{textDecoration: 'none'}}
 					class={'user-edit'}
-					to={`/users/${id}`} > Edit</Link>
+					to={`/redux-example/users/${id}`} > Edit</Link>
 
 				<button onClick={ () => handlers.select(userName)}>Select</button>
 
