@@ -29,6 +29,8 @@ export default class CouterRedux extends Component {
     return { counter: nextProps.count };
   }
 
+ 
+
   render() {
     debugger;
 
